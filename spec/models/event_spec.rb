@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Event, type: :model do
-  let(:event) { create(:event) }
+  fixtures :events
+  let(:event) { events(:event_1) }
 
   it "rejects title with over 90 characters" do
     event.title = Faker::Lorem.characters(100)
