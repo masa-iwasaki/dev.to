@@ -1,10 +1,29 @@
 require "rails_helper"
 
 RSpec.describe RatingVote, type: :model do
-  let(:user) { create(:user, :trusted) }
-  let(:user2)        { create(:user, :trusted) }
-  let(:user3)        { create(:user, :trusted) }
-  let(:article) { create(:article, user_id: user.id) }
+  fixtures :users, :articles
+  let(:user) {
+    obj = users(:user)
+    obj.add_role(:trusted)
+    obj
+  }
+  let(:user2) {
+    obj = users(:user_1)
+    obj.add_role(:trusted)
+    obj
+  }
+
+  let(:user3) {
+    obj = users(:user_2)
+    obj.add_role(:trusted)
+    obj
+  }
+
+  let(:article) {
+    obj = articles(:article)
+    user.articles << obj
+    obj
+  }
 
   describe "validations" do
     it { is_expected.to validate_numericality_of(:rating).is_greater_than(0.0).is_less_than_or_equal_to(10.0) }
