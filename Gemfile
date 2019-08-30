@@ -137,6 +137,7 @@ group :development, :test do
   gem "rubocop-rspec", "~> 1.33", require: false # Code style checking for RSpec files
   gem "spring", "~> 2.1" # Preloads your application so things like console, rake and tests run faster
   gem "spring-commands-rspec", "~> 1.0" # rspec command for spring
+  gem "factory_scrap", path: "../factory_scrap"
 end
 
 group :test do

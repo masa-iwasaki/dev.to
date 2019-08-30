@@ -1,0 +1,3 @@
+reading_reaction:
+  reactable: "<%= create(:article) %>"
+  category: <%= "readinglist" %>

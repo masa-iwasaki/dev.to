@@ -1,0 +1,4 @@
+reaction:
+  reactable_id: "<%= rand(10000) %>"
+  reactable_type: <%= "Article" %>
+  category: <%= "like" %>

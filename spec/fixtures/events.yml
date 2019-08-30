@@ -1,6 +1,6 @@
-event_1:
-  title: <%= Faker::Company.bs %>
-  description_markdown: <%= Faker::Hipster.paragraph(2) %>
-  starts_at: <%= Time.current %>
-  ends_at: <%= 3660.seconds.from_now %>
-  category: 'AMA'
+event:
+  title: '<%= Faker::Company.bs %>'
+  description_markdown: '<%= Faker::Hipster.paragraph(2) %>'
+  starts_at: '<%= Time.current %>'
+  ends_at: '<%= 3660.seconds.from_now %>'
+  category: <%= "AMA" %>

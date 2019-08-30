@@ -1,0 +1,6 @@
+page:
+  title: "<%= (Faker::Book.title + rand(100).to_s) %>"
+  body_markdown: "<%= (Faker::Book.title + rand(100).to_s) %>"
+  slug: <%= "word-#{rand(10000)}" %>
+  description: "<%= (Faker::Book.title + rand(100).to_s) %>"
+  template: <%= "contained" %>

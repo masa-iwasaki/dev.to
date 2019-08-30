@@ -1,0 +1,3 @@
+profile_pin:
+  pinnable_type: <%= "Article" %>
+  profile_type: <%= "User" %>

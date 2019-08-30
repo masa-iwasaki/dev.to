@@ -1,0 +1,2 @@
+page_view:
+  referrer: "<%= Faker::Internet.url %>"

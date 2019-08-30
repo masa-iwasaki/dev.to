@@ -1,0 +1,3 @@
+badge_achievement:
+  rewarder: "<%= user %>"
+  rewarding_context_message_markdown: <%= "Hello [Yoho](/hey)" %>

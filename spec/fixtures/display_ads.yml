@@ -1,0 +1,3 @@
+display_ad:
+  placement_area: <%= "sidebar_left" %>
+  body_markdown: <%= "Hello _hey_ Hey hey" %>
