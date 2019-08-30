@@ -1,9 +1,10 @@
 require "rails_helper"
 
 RSpec.describe ClassifiedListing, type: :model do
-  let(:classified_listing) { create(:classified_listing, user_id: user.id) }
-  let(:user) { create(:user) }
-  let(:organization) { create(:organization) }
+  fixtures :users, :organizations, :classified_listings
+  let(:classified_listing) { classified_listings(:classified_listing) }
+  let(:user) { users(:user) }
+  let(:organization) { organizations(:organization) }
 
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:body_markdown) }
@@ -30,6 +31,7 @@ RSpec.describe ClassifiedListing, type: :model do
 
   describe "body html" do
     it "converts markdown to html" do
+      classified_listing.save  # to call before_save callback
       expect(classified_listing.processed_html).to include("<p>")
     end
 
@@ -59,9 +61,9 @@ RSpec.describe ClassifiedListing, type: :model do
 
   describe "credits" do
     it "does not destroy associated credits if destroyed" do
-      credit = create(:credit)
-      classified_listing.credits << credit
-      classified_listing.save!
+      credit = classified_listing.credits.new
+
+      credit.save!
 
       expect { classified_listing.destroy }.not_to change(Credit, :count)
       expect(credit.reload.purchase).to be_nil
