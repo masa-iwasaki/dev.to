@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe SearchKeyword, type: :model do
-  let(:search_keyword) { create(:search_keyword) }
+  fixtures :search_keywords
+  let(:search_keyword) { search_keywords(:search_keyword) }
 
   it { is_expected.to validate_presence_of(:keyword) }
   it { is_expected.to validate_presence_of(:google_result_path) }

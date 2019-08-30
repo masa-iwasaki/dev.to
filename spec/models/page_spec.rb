@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Page, type: :model do
-  let(:page)         { create(:page) }
+  fixtures :pages
+  let(:page) { pages(:page) }
 
   describe "#processed_html" do
     it "accepts body markdown and turns it into html" do
