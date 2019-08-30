@@ -1,2 +1,3 @@
 collection:
+  user: user
   slug: <%= "word-#{rand(10000)}" %>

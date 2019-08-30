@@ -1,21 +1,21 @@
 article:
-  title: "<%= (Faker::Book.title + rand(100).to_s) %>"
-  published: "<%= true %>"
-  date: <%= "01/01/2015" %>
-  tags: <%= Faker::Hipster.words(4).join(", ") %>
-  canonical_url: "<%= Faker::Internet.url %>"
-  with_canonical_url: "<%= false %>"
-  with_date: "<%= false %>"
-  with_tags: "<%= true %>"
-  with_hr_issue: "<%= false %>"
-  with_tweet_tag: "<%= false %>"
-  with_title: "<%= true %>"
-  with_collection: "<%= nil %>"
-  description: "<%= Faker::Hipster.paragraph(1)[(0..100)] %>"
-  main_image: "<%= Faker::Avatar.image %>"
+  collection: collection
+  description: '<%= Faker::Hipster.paragraph(1)[(0..100)] %>'
+  main_image: '<%= Faker::Avatar.image %>'
   language: <%= "en" %>
-  experience_level_rating: "<%= rand((4..6)) %>"
-  body_markdown: |-
-    <%= "        ---\n        title: #{title if with_title}\n        published: #{published}\n        tags: #{tags if with_tags}\n        date: #{date if with_date}\n        series: #{with_collection&.slug if with_collection}\n        canonical_url: #{canonical_url if with_canonical_url}\n        ---\n\n        #{Faker::Hipster.paragraph(2)}\n        #{"{% tweet 1018911886862057472%}" if with_tweet_tag}\n        #{Faker::Hipster.paragraph(1)}\n        #{if with_hr_issue then
-      "\n\n---\n\n something \n\n---\n funky in the code? \n---\n That's nice"
-    end}\n" %>
+  experience_level_rating: '<%= rand((4..6)) %>'
+  body_markdown: <%= "This is markdown" %>
+article_1:
+  collection: collection
+  description: '<%= Faker::Hipster.paragraph(1)[(0..100)] %>'
+  main_image: '<%= Faker::Avatar.image %>'
+  language: <%= "en" %>
+  experience_level_rating: '<%= rand((4..6)) %>'
+  body_markdown: <%= "This is markdown" %>
+article_2:
+  collection: collection
+  description: '<%= Faker::Hipster.paragraph(1)[(0..100)] %>'
+  main_image: '<%= Faker::Avatar.image %>'
+  language: <%= "en" %>
+  experience_level_rating: '<%= rand((4..6)) %>'
+  body_markdown: <%= "This is markdown" %>

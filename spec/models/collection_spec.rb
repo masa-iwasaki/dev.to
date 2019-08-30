@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Collection, type: :model do
-  let(:user) { create(:user) }
-  let(:collection) { create(:collection, :with_articles, user: user) }
+  fixtures :collections
+  let(:collection) { collections(:collection) }
 
   describe "when a single article in collection is updated" do
     it "touches all articles in the collection" do
