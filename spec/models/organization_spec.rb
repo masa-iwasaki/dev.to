@@ -1,8 +1,14 @@
 require "rails_helper"
 
 RSpec.describe Organization, type: :model do
-  let(:user)         { create(:user) }
-  let(:organization) { create(:organization) }
+  fixtures :users, :organizations
+
+  let(:user) { users(:user) }
+  let(:organization) {
+    org = organizations(:organization)
+    org.profile_image = File.open(Rails.root.join("app", "assets", "images", "android-icon-36x36.png"))
+    org
+  }
 
   it { is_expected.to have_many(:sponsorships) }
 
