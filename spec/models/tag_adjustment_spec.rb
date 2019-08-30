@@ -1,16 +1,18 @@
 require "rails_helper"
 
 RSpec.describe TagAdjustment, type: :model do
+  fixtures :users, :articles, :tags
+
   before do
     mod_user.add_role(:tag_moderator, tag)
     admin_user.add_role(:admin)
   end
 
-  let(:article) { create(:article) }
-  let(:tag) { create(:tag) }
-  let(:admin_user) { create(:user) }
-  let(:mod_user) { create(:user) }
-  let(:regular_user) { create(:user) }
+  let(:article) { articles(:article) }
+  let(:tag) { tags(:tag) }
+  let(:admin_user) { users(:user) }
+  let(:mod_user) { users(:user_1) }
+  let(:regular_user) { users(:user_2) }
 
   it { is_expected.to validate_presence_of(:user_id) }
   it { is_expected.to validate_presence_of(:article_id) }
