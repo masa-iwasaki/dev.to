@@ -1,3 +1,4 @@
 display_ad:
+  organization: organization
   placement_area: <%= "sidebar_left" %>
   body_markdown: <%= "Hello _hey_ Hey hey" %>
