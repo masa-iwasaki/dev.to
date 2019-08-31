@@ -1,4 +1,5 @@
 github_repo:
+  user: user
   name: <%= Faker::Book.title %>
   url: <%= Faker::Internet.url %>
   description: <%= Faker::Book.title %>

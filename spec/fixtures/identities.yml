@@ -1,6 +1,6 @@
 identity:
-  uid: <%= generate(:uid) %>
-  provider: <%= "github" %>
+  user: user
+  uid: <%= rand(100000) %>
+  provider: github
   token: <%= rand(100000) %>
   secret: <%= rand(100000) %>
-  auth_data_dump: <%= { "info" => ({ "nickname" => "something" }) } %>

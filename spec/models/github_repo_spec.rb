@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe GithubRepo, type: :model do
-  let(:user) { create(:user) }
+  fixtures :users, :identities
+  let(:user) { users(:user) }
   let(:repo) { build(:github_repo, user_id: user.id) }
 
   it { is_expected.to validate_presence_of(:name) }
@@ -17,7 +18,7 @@ RSpec.describe GithubRepo, type: :model do
   describe "::find_or_create" do
     it "creates a new object if one doesn't already exists" do
       params = { name: Faker::Book.title, user_id: user.id, github_id_code: rand(1000),
-                 url: Faker::Internet.url }
+                url: Faker::Internet.url }
       described_class.find_or_create(params)
       expect(described_class.count).to eq(1)
     end
@@ -33,10 +34,10 @@ RSpec.describe GithubRepo, type: :model do
 
   describe "::update_to_latest" do
     let(:my_ocktokit_client) { instance_double(Octokit::Client) }
-    let(:url_of_repos_without_github_id) { Faker::Internet.url }
     let(:repo_without_github_id) do
-      create(:github_repo, user_id: user.id, url: url_of_repos_without_github_id)
+      fixtures(:github_repo)
     end
+
     let(:stubbed_github_repo) do
       OpenStruct.new(repo.attributes.merge(id: repo.github_id_code, html_url: repo.url))
     end
