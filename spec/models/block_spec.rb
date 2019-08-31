@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Block, type: :model do
-  let(:user) { create(:user) }
+  fixtures :users
+  let(:user) { users(:user) }
   let(:block) { Block.new(user: user, input_html: "hello") }
 
   it "creates processed_html after published!" do
