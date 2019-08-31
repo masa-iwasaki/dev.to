@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Credit, type: :model do
-  fixtures :users, :organizations
+  fixtures :users, :organizations, :credits
   let(:user) { users(:user) }
   let(:organization) { organizations(:organization) }
   let(:random_number) { rand(100) }
@@ -50,12 +50,14 @@ RSpec.describe Credit, type: :model do
     let(:listing) { classified_listings(:classified_listing) }
 
     it "associates to a purchase" do
-      credit = create(:credit, purchase: listing)
+      credit = credits(:credit)
+      credit.purchase = listing
       expect(credit.purchase).to eq(listing)
     end
 
     it "is valid without a purchase" do
-      credit = create(:credit, purchase: nil)
+      credit = credits(:credit)
+      credit.purchase = nil
       expect(credit).to be_valid
     end
   end

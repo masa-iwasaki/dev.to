@@ -1,0 +1,2 @@
+credit:
+  cost: 0.0 # assign default value to avoid empty hash errors
