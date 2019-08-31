@@ -1,8 +1,13 @@
 require "rails_helper"
 
 RSpec.describe Poll, type: :model do
-  let(:article) { create(:article, featured: true) }
-  let(:poll) { create(:poll, article_id: article.id) }
+  fixtures :articles, :polls
+  let(:article) {
+    obj = articles(:article)
+    obj.featured = true
+    obj
+  }
+  let(:poll) { polls(:poll) }
 
   it "limits length of prompt" do
     long_string = "0" * 200
