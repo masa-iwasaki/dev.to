@@ -41,7 +41,7 @@ RSpec.describe BufferUpdate, type: :model do
 
   it "allows same text across different articles with the same tag" do
     BufferUpdate.buff!(article.id, "twitter_buffer_text", "CODE", "twitter", 1)
-    BufferUpdate.buff!(create(:article).id, "twitter_buffer_text", "CODE", "twitter", 1)
+    BufferUpdate.buff!(articles(:article_1).id, "twitter_buffer_text", "CODE", "twitter", 1)
     expect(BufferUpdate.all.size).to eq(2)
   end
 end
