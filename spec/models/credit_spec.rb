@@ -1,8 +1,9 @@
 require "rails_helper"
 
 RSpec.describe Credit, type: :model do
-  let(:user) { create(:user) }
-  let(:organization) { create(:organization) }
+  fixtures :users, :organizations
+  let(:user) { users(:user) }
+  let(:organization) { organizations(:organization) }
   let(:random_number) { rand(100) }
 
   it { is_expected.to belong_to(:user).optional }
@@ -44,7 +45,9 @@ RSpec.describe Credit, type: :model do
   end
 
   describe "#purchase" do
-    let(:listing) { create(:classified_listing) }
+    fixtures :classified_listings
+
+    let(:listing) { classified_listings(:classified_listing) }
 
     it "associates to a purchase" do
       credit = create(:credit, purchase: listing)
