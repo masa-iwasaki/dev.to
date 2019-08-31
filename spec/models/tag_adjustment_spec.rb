@@ -27,7 +27,7 @@ RSpec.describe TagAdjustment, type: :model do
       expect(tag_adjustment).to be_valid
     end
     it "does not allow tag mods to create for other tags" do
-      another_tag = create(:tag)
+      another_tag = tags(:tag_1)
       tag_adjustment = build(:tag_adjustment, user_id: mod_user.id, article_id: article.id, tag_id: another_tag.id)
       expect(tag_adjustment).to be_invalid
     end

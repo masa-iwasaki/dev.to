@@ -1,3 +1,7 @@
 tag:
   name: '<%= rand(10000).to_s %>'
   supported: '<%= true %>'
+
+tag_1:
+  name: '<%= rand(10000).to_s %>'
+  supported: '<%= true %>'
