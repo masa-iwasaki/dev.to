@@ -1,7 +1,14 @@
 require "rails_helper"
 
 RSpec.describe HtmlVariant, type: :model do
-  let(:html_variant) { create(:html_variant, approved: true, published: true) }
+  fixtures :html_variants
+  let(:html_variant) {
+    obj = html_variants(:html_variant)
+    obj.approved = true
+    obj.published = true
+    obj.save!
+    obj
+  }
 
   it { is_expected.to validate_uniqueness_of(:name) }
   it { is_expected.to validate_presence_of(:html) }
@@ -36,7 +43,9 @@ RSpec.describe HtmlVariant, type: :model do
     expect(HtmlVariant.find_for_test(["hello"]).id).to eq(html_variant.id)
   end
   it "creates an html variant with img in it" do
-    html_variant = create(:html_variant, approved: false, published: true)
+    html_variant = html_variants(:html_variant)
+    html_variant.approved = false
+    html_variant.published = true
     html_variant.html = "<div><img src='https://devimages.com/image.jpg' /></div>"
     html_variant.save!
     expect(html_variant.html).to include("cloudinary")
