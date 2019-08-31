@@ -1,4 +1,4 @@
 organization_membership:
-  user_id: "<%= rand(6) %>"
-  organization_id: "<%= rand(6) %>"
+  user_id: <%= rand(6) %>
+  organization_id: <%= rand(6) %>
   type_of_user: <%= "member" %>

@@ -1,2 +1,2 @@
 feedback_message:
-  reporter_id: "<%= 1 %>"
+  reporter_id: <%= 1 %>

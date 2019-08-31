@@ -1,2 +1,2 @@
 broadcast:
-  sent: "<%= false %>"
+  sent: <%= false %>

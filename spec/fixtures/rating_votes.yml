@@ -1,3 +1,3 @@
 rating_vote:
   group: <%= "experience_level" %>
-  rating: "<%= rand((1.0..8.0)) %>"
+  rating: <%= rand((1.0..8.0)) %>

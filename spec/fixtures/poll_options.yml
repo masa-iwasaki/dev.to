@@ -1,2 +1,2 @@
 poll_option:
-  markdown: "<%= Faker::Hipster.words(3) %>"
+  markdown: <%= Faker::Hipster.words(3) %>

@@ -1,4 +1,4 @@
 badge:
-  title: "<%= Faker::Games::Overwatch.quote %>"
-  description: "<%= Faker::Lorem.sentence %>"
-  badge_image: "<%= image %>"
+  title: <%= Faker::Games::Overwatch.quote %>
+  description: <%= Faker::Lorem.sentence %>
+  badge_image: <%= image %>
