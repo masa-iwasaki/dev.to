@@ -32,6 +32,7 @@ install:
 before_script:
   - bundle exec rails db:create
 script:
+  - rails r "Webdrivers::Chromedriver.update"
   - bundle exec rails webpacker:compile
   - bundle exec rails db:schema:load
   # - './cc-test-reporter before-build'
