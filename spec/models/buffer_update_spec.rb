@@ -1,8 +1,9 @@
 require "rails_helper"
 
 RSpec.describe BufferUpdate, type: :model do
-  let(:user) { create(:user) }
-  let(:article) { create(:article, user_id: user.id) }
+  fixtures :users, :articles
+  let(:user) { users(:user) }
+  let(:article) { articles(:article) }
 
   it "creates update" do
     BufferUpdate.buff!(article.id, "twitter_buffer_text", "CODE", "twitter")
