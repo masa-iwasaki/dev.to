@@ -1,6 +1,7 @@
 _fixture:
   model_class: Article
 article:
+  title: 'hogehoge'
   user: user
   collection: collection
   description: <%= Faker::Hipster.paragraph(1)[(0..100)] %>

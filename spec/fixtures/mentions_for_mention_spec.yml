@@ -1,3 +1,5 @@
 _fixture:
   model_class: Mention
-mention: {}
+mention:
+  user: user
+  mentionable: article (Article)

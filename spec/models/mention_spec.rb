@@ -17,7 +17,7 @@ RSpec.describe Mention, type: :model do
   end
 
   it "creates a valid mention" do
-    expect(create(:mention)).to be_valid
+    expect(mentions_for_mention_spec(:mention)).to be_valid
   end
 
   it "doesn't raise undefined method for NilClass on valid?" do
