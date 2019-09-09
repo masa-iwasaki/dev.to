@@ -1,8 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Follow, type: :model do
-  let(:user) { create(:user) }
-  let(:user_2) { create(:user) }
+  fixtures :users, :organizations
+
+  let(:user) { users(:user_1) }
+  let(:user_2) { users(:user_2) }
 
   describe "validations" do
     it { is_expected.to validate_inclusion_of(:subscription_status).in_array(%w[all_articles none]) }
@@ -48,7 +50,7 @@ RSpec.describe Follow, type: :model do
     it "doesn't create a channel when a followable is an org" do
       expect do
         perform_enqueued_jobs do
-          Follow.create!(follower: user, followable: create(:organization))
+          Follow.create!(follower: user, followable: organizations(:organization))
         end
       end.not_to change(ChatChannel, :count)
     end
