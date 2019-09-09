@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe PodcastEpisode, type: :model do
-  let(:podcast_episode) { create(:podcast_episode) }
+  fixtures :podcasts, :podcast_episodes
+  let(:podcast_episode) { podcast_episodes(:podcast_episode) }
 
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:slug) }

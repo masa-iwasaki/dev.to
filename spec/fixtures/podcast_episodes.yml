@@ -1,5 +1,5 @@
 podcast_episode:
-  podcast_id: <%= rand(30) %>
+  podcast: podcast
   title: <%= rand(30) %>
   media_url: <%= Faker::Internet.url %>
   website_url: <%= Faker::Internet.url %>
