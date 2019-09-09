@@ -1,2 +1,5 @@
 message:
   message_markdown: <%= Faker::Lorem.sentence %>
+message_1:
+  message_markdown: <%= Faker::Lorem.sentence %>
+  chat_channel: chat_channel_1
