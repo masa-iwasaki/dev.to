@@ -1,6 +1,5 @@
+_fixture:
+  model_class: ChatChannel
 chat_channel:
-  channel_type: <%= "open" %>
-  slug: <%= rand(10000000000).to_s %>
-chat_channel_1:
   channel_type: <%= "open" %>
   slug: <%= rand(10000000000).to_s %>
