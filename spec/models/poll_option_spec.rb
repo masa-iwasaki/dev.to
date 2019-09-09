@@ -1,8 +1,9 @@
 require "rails_helper"
 
 RSpec.describe PollOption, type: :model do
-  let(:article) { create(:article, featured: true) }
-  let(:poll) { create(:poll, article_id: article.id) }
+  fixtures :articles, :polls
+  let(:article) { articles(:article) }
+  let(:poll) { polls(:poll) }
 
   it "allows up to 128 markdown characters" do
     poll_option = PollOption.create(markdown: "0" * 30, poll_id: poll.id)
