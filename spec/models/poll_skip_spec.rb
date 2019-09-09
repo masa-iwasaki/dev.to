@@ -1,8 +1,9 @@
 require "rails_helper"
 
 RSpec.describe PollSkip, type: :model do
-  let(:article) { create(:article, featured: true) }
-  let(:user) { create(:user) }
+  fixtures :users, :articles
+  let(:article) { articles(:article) }
+  let(:user) { users(:user) }
   let(:poll) { create(:poll, article_id: article.id) }
 
   it "is unique across poll and user" do
