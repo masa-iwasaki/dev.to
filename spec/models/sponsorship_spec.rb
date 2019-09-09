@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Sponsorship, type: :model do
+  fixtures :organizations
+
   it { is_expected.to belong_to(:user) }
   it { is_expected.to belong_to(:organization).inverse_of(:sponsorships) }
   it { is_expected.to belong_to(:sponsorable).optional }
@@ -49,7 +51,7 @@ RSpec.describe Sponsorship, type: :model do
   end
 
   describe "validations" do
-    let(:org) { create(:organization) }
+    let(:org) { organizations(:organization) }
 
     it "forbids an org to have multiple 'expiring' sponsorships" do
       create(:sponsorship, level: :gold, organization: org)
