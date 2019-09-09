@@ -1,11 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Notification, type: :model do
-  let(:user)            { create(:user) }
-  let(:user2)           { create(:user) }
-  let(:user3)           { create(:user) }
-  let(:organization)    { create(:organization) }
-  let(:article)         { create(:article, :with_notification_subscription, user_id: user.id, page_views_count: 4000, positive_reactions_count: 70) }
+  fixtures :users, :organizations
+  let(:user) { users(:user_1) }
+  let(:user2) { users(:user_2) }
+  let(:user3) { users(:user_3) }
+  let(:organization) { organizations(:organization) }
+  let(:article) { create(:article, :with_notification_subscription, user_id: user.id, page_views_count: 4000, positive_reactions_count: 70) }
   let(:follow_instance) { user.follow(user2) }
   let(:badge_achievement) { create(:badge_achievement) }
 
@@ -21,7 +22,7 @@ RSpec.describe Notification, type: :model do
                             on_duplicate_key_update: {
                               conflict_target: %i[notifiable_id notifiable_type user_id action],
                               index_predicate: "action IS NOT NULL",
-                              columns: %i[json_data notified_at read]
+                              columns: %i[json_data notified_at read],
                             })
       end.not_to change(Notification, :count)
     end
@@ -33,7 +34,7 @@ RSpec.describe Notification, type: :model do
                           on_duplicate_key_update: {
                             conflict_target: %i[notifiable_id notifiable_type user_id action],
                             index_predicate: "action IS NOT NULL",
-                            columns: %i[json_data notified_at read]
+                            columns: %i[json_data notified_at read],
                           })
       notification.reload
       expect(notification.json_data["user_id"]).to eq(2)
@@ -47,7 +48,7 @@ RSpec.describe Notification, type: :model do
                             on_duplicate_key_update: {
                               conflict_target: %i[notifiable_id notifiable_type organization_id action],
                               index_predicate: "action IS NOT NULL",
-                              columns: %i[json_data notified_at read]
+                              columns: %i[json_data notified_at read],
                             })
       end.not_to change(Notification, :count)
     end
@@ -65,7 +66,7 @@ RSpec.describe Notification, type: :model do
                               on_duplicate_key_update: {
                                 conflict_target: %i[notifiable_id notifiable_type user_id],
                                 index_predicate: "action IS NULL",
-                                columns: %i[json_data notified_at read]
+                                columns: %i[json_data notified_at read],
                               })
         end.not_to change(Notification, :count)
       end
@@ -79,7 +80,7 @@ RSpec.describe Notification, type: :model do
                               on_duplicate_key_update: {
                                 conflict_target: %i[notifiable_id notifiable_type organization_id],
                                 index_predicate: "action IS NULL",
-                                columns: %i[json_data notified_at read]
+                                columns: %i[json_data notified_at read],
                               })
         end.not_to change(Notification, :count)
       end
