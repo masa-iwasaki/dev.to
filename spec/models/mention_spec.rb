@@ -1,14 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Mention, type: :model do
-  fixtures :users_for_mention_spec,
-    :articles_for_mention_spec,
-    :comments_for_mention_spec,
-    :mentions_for_mention_spec
+  fixtures :users, :articles, :comments, :mentions
 
-  let(:user) { users_for_mention_spec(:user) }
-  let(:article) { articles_for_mention_spec(:article) }
-  let(:comment) { comments_for_mention_spec(:comment) }
+  let(:user) { users(:user) }
+  let(:article) { articles(:article) }
+  let(:comment) { comments(:comment) }
 
   it "calls on Mentions::CreateAllJob" do
     described_class.create_all(comment) do
@@ -17,7 +14,7 @@ RSpec.describe Mention, type: :model do
   end
 
   it "creates a valid mention" do
-    expect(mentions_for_mention_spec(:mention)).to be_valid
+    expect(create(:mention)).to be_valid
   end
 
   it "doesn't raise undefined method for NilClass on valid?" do
